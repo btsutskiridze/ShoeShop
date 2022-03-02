@@ -98,7 +98,7 @@ nav ul li a:hover {
       #ffffff00,
       #fff
     ),
-    url(/images/shoe-bg22.jpg);
+    url(./images/shoe-bg22.jpg);
   background-position: top;
   background-repeat: no-repeat;
   background-size: contain;
