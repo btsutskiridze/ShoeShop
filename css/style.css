@@ -146,7 +146,7 @@ nav ul li a:hover {
       #ffffff00,
       #fff
     ),
-    url(/images/welcome-mobile-bg.jpg);
+    url(../images/welcome-mobile-bg.jpg);
   background-position: top;
   background-repeat: no-repeat;
   background-size: contain;
@@ -164,7 +164,7 @@ nav ul li a:hover {
         #ffffff00,
         #fff
       ),
-      url(/images/welcome-pc-bg.jpg);
+      url(../images/welcome-pc-bg.jpg);
     background-size: cover;
     background-position: left;
   }
