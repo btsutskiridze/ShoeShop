@@ -27,6 +27,7 @@ html {
 }
 body {
   font-family: "Open Sans", sans-serif;
+  height: 200vh;
 }
 @media screen and (min-width: 1600px) {
   body {
@@ -57,7 +58,7 @@ header {
   align-items: center;
 }
 .logo {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #2d3742;
   font-weight: 800;
 }
@@ -111,6 +112,7 @@ nav {
 .hide-mobile {
   display: none;
 }
+
 .dropdown {
   position: relative;
   width: 100%;
@@ -135,7 +137,68 @@ nav {
 .dropdown li a {
   color: #262e37;
 }
+.sidebar {
+  width: 100%;
+  position: relative;
+  top: 3em;
+}
+.sidebar > details > summary {
+  text-transform: capitalize;
+  cursor: pointer;
+  color: #272938;
+  list-style-type: none;
+  padding: 0.4em 1em;
+  width: 100%;
+  font-weight: 500;
+  font-size: 1.5rem;
+  background: #acb5be;
+}
+.arrow {
+  margin-left: 0.5em;
+  width: 25px;
+  animation: rotateBack 0.3s;
+}
+@keyframes rotateBack {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
 
+.sidebar > details[open] .arrow {
+  transform: rotate(180deg);
+  animation: rotate 0.3s;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+.shoe-sizes-div {
+  padding: 1em 1em 1em 2em;
+  background: #d4dfe6;
+}
+.shoe-sizes {
+  font-size: 1.7rem;
+  line-height: 1.8em;
+  font-weight: 400;
+  color: #272938;
+}
+[type="checkbox"] {
+  width: 23px;
+  height: 23px;
+  margin-right: 0.5em;
+}
+
+/* =========
+@MEDIA SCREEN
+============ */
 @media screen and (min-width: 930px) {
   .menu {
     display: none;
@@ -147,6 +210,10 @@ nav {
   header,
   .nav-li-elements {
     height: 60px;
+  }
+  header {
+    position: fixed;
+    z-index: 2;
   }
   nav {
     display: block;
@@ -165,6 +232,7 @@ nav {
     cursor: pointer;
     display: flex;
     position: relative;
+    background: white;
     align-items: center;
   }
   .nav-li-elements:hover {
@@ -199,5 +267,51 @@ nav {
   }
   .dropdown li {
     text-align: left;
+  }
+
+  .sidebar {
+    position: fixed;
+    width: 280px;
+    height: 80%;
+    padding: 2em;
+    top: 15%;
+    display: flex;
+    border-right: 1px solid gray;
+  }
+
+  .sidebar > details > summary {
+    font-size: 1rem;
+    border-bottom: 1px solid gray;
+    background: #fff;
+  }
+  .arrow {
+    width: unset;
+  }
+  .shoe-sizes-div {
+    margin: 0.5em 0;
+    overflow-y: scroll;
+    height: 80%;
+    width: 100%;
+    background: #fff;
+  }
+
+  /* width */
+  .shoe-sizes-div::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Handle */
+  .shoe-sizes-div::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+
+  .shoe-sizes {
+    font-size: 1.1rem;
+    line-height: 2em;
+  }
+  [type="checkbox"] {
+    width: 15px;
+    height: 15px;
   }
 }
