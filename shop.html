@@ -5,8 +5,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="/css/shop.css" />
   </head>
   <body>
-    <a href="index.html">back </a>
+    <div class="container">
+      <header>
+        <a href="#" class="logo">SHOEshop</a>
+        <nav>
+          <a href="#" class="">
+            <img
+              src="./images/ham.svg"
+              alt="toggle menu"
+              class="menu"
+              id="menu"
+            />
+          </a>
+          <ul class="nav-links hide-mobile" id="nav">
+            <li id="exit" class="exit-btn">
+              <img
+                class="exit-menu"
+                src="./images/exit.svg"
+                alt="exit menu"
+                style="transform: rotate(90deg)"
+              />
+            </li>
+            <li class="nav-li-elements">
+              <a href="index.html" class="main-links" id="home-nav-btn">home</a>
+            </li>
+            <li class="nav-li-elements">
+              <a href="#" class="main-links">all</a>
+              <ul class="dropdown">
+                <li><a href="#">classic shoes</a></li>
+                <li><a href="#">athletic shoes</a></li>
+                <li><a href="#">boots</a></li>
+              </ul>
+            </li>
+            <li class="nav-li-elements">
+              <a href="#" class="main-links">woman</a>
+              <ul class="dropdown">
+                <li><a href="#">classic shoes</a></li>
+                <li><a href="#">athletic shoes</a></li>
+                <li><a href="#">boots</a></li>
+              </ul>
+            </li>
+            <li class="nav-li-elements">
+              <a href="#" class="main-links">men</a>
+              <ul class="dropdown">
+                <li><a href="#">classic shoes</a></li>
+                <li><a href="#">athletic shoes</a></li>
+                <li><a href="#">boots</a></li>
+              </ul>
+            </li>
+            <li class="nav-li-elements">
+              <a href="#" class="main-links">children</a>
+              <ul class="dropdown">
+                <li><a href="#">classic shoes</a></li>
+                <li><a href="#">athletic shoes</a></li>
+                <li><a href="#">boots</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="/javascript/shop.js"></script>
+    </div>
   </body>
 </html>

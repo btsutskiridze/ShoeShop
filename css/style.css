@@ -1,3 +1,20 @@
+/*
+=============== 
+Fonts
+===============
+*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap");
+
+/*
+=============== 
+Variable
+===============
+*/
+:root {
+  --secondaryColor: #30383d;
+}
+
+/*=============== Global Styles===============*/
 *,
 ::before,
 ::after {
@@ -5,17 +22,32 @@
   padding: 0;
   box-sizing: border-box;
 }
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap");
-
 html {
   scroll-behavior: smooth;
 }
 body {
   font-family: "Open Sans", sans-serif;
 }
-.container {
-  text-align: center;
+@media screen and (min-width: 1600px) {
+  body {
+    width: 80%;
+    margin: 0 auto;
+  }
 }
+@media screen and (min-width: 2200px) {
+  body {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+}
+
+/* navigation bar */
 header {
   position: relative;
   padding: 0.8em 1.2em;
@@ -23,27 +55,13 @@ header {
   justify-content: space-between;
   z-index: 2;
 }
-.logo {
-  font-size: 1.5rem;
-  color: #2d3742;
-  font-weight: 800;
-}
-ul {
-  list-style-type: none;
-}
+
 nav {
   float: right;
   display: flex;
   align-items: center;
 }
-a {
-  text-decoration: none;
-}
-.menu {
-  width: 40px;
-  float: right;
-  z-index: 11;
-}
+
 nav ul {
   position: fixed;
   top: 0;
@@ -64,17 +82,46 @@ nav ul li a {
 nav ul li a:hover {
   background: #7e92a1;
 }
+
+/*=============== Global classes ===============*/
+
+/* main container */
+.container {
+  text-align: center;
+}
+
+/* logo text */
+.logo {
+  font-size: 1.5rem;
+  color: #2d3742;
+  font-weight: 800;
+}
+
+/* burger menu img */
+.menu {
+  position: fixed;
+  width: 40px;
+  float: right;
+  top: 0;
+  right: 0;
+  z-index: 11;
+  margin: 0.8em 1.2em;
+}
+/* burger menu exit(li element)*/
 .exit-btn {
   text-align: right;
   padding: 0.8em 1.2em;
 }
+/* burger menu exit img */
 .exit-menu {
   width: 40px;
   height: 40px;
 }
+/* class of ul element of nav. To hide and show menu*/
 .hide-mobile {
   display: none;
 }
+
 .welcome-container {
   position: relative;
   display: flex;
@@ -83,6 +130,7 @@ nav ul li a:hover {
   height: 92vh;
   z-index: 1;
 }
+/* added background image to welcome container */
 .welcome-container::before {
   content: "";
   position: absolute;
@@ -98,24 +146,14 @@ nav ul li a:hover {
       #ffffff00,
       #fff
     ),
-    url(./images/shoe-bg22.jpg);
+    url(/images/welcome-mobile-bg.jpg);
   background-position: top;
   background-repeat: no-repeat;
   background-size: contain;
-  z-index: -10;
+  z-index: -1;
 }
-@media screen and (min-width: 1600px) {
-  body {
-    width: 80%;
-    margin: 0 auto;
-  }
-}
-@media screen and (min-width: 2200px) {
-  body {
-    width: 60%;
-    margin: 0 auto;
-  }
-}
+
+/* changing welcome container image for responsivity */
 @media screen and (min-width: 600px) {
   .welcome-container::before {
     background-image: linear-gradient(
@@ -126,24 +164,28 @@ nav ul li a:hover {
         #ffffff00,
         #fff
       ),
-      url(images/shoe-bg2.jpg);
+      url(/images/welcome-pc-bg.jpg);
     background-size: cover;
     background-position: left;
   }
 }
+
+/* link to the shop in welcome container */
 .shop-link {
   font-size: 1.5em;
-  color: #30383d;
+  color: var(--secondaryColor);
   text-transform: uppercase;
-  border: 1px solid #30383d;
+  border: 1px solid var(--secondaryColor);
   border-radius: 10px;
   margin: 4em 0;
   padding: 0.5em 0.8em;
 }
 .shop-link:hover {
-  background-color: #30383d;
+  background-color: var(--secondaryColor);
   color: #fff;
 }
+
+/* -- part of container about -- */
 .about-container {
   margin: 4em 0 10em 0;
   width: 100%;
@@ -176,9 +218,11 @@ nav ul li a:hover {
   font-size: 1.5rem;
   padding: 0.5em 1.3em;
 }
+
+/* -- part of footer -- */
 .footer-container {
   width: 100%;
-  background-color: #30383d;
+  background-color: var(--secondaryColor);
   text-align: center;
   padding: 1em;
   border-radius: 40px 40px 0 0;
@@ -195,6 +239,14 @@ nav ul li a:hover {
   color: #92a4ad;
   font-size: 0.8rem;
 }
+
+/*
+=========
+for better desktop experience 
+========= 
+*/
+
+/* navigation bar. (hide burgerMenu) */
 @media screen and (min-width: 1000px) {
   .menu {
     display: none;
@@ -230,6 +282,8 @@ nav ul li a:hover {
     transform: scale(1.2);
   }
 }
+
+/* welcome container  */
 @media screen and (min-width: 1200px) {
   .welcome-container {
     align-items: center;
@@ -240,6 +294,8 @@ nav ul li a:hover {
     margin: 0 4em;
   }
 }
+
+/* about container */
 @media screen and (min-width: 1010px) {
   .about-container {
     display: flex;
