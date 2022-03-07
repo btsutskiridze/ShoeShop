@@ -27,7 +27,6 @@ html {
 }
 body {
   font-family: "Open Sans", sans-serif;
-  height: 200vh;
 }
 @media screen and (min-width: 1600px) {
   body {
@@ -53,22 +52,28 @@ header {
   display: flex;
   position: relative;
   background: #fff;
-  padding: 0.8em 2em;
+  padding: 0.8em 1.2em;
   width: 100%;
+  top: 0;
   align-items: center;
 }
-.logo {
-  font-size: 2rem;
-  color: #2d3742;
-  font-weight: 800;
-}
-
 nav {
   display: flex;
   align-items: center;
 }
+
+/*=============== Global classes ===============*/
+
+.logo {
+  font-size: 1.5rem;
+  color: #2d3742;
+  font-weight: 800;
+}
+
+/* ul element inside nav element */
 .nav-links {
   position: fixed;
+  overflow-y: scroll;
   z-index: 2;
   top: 0;
   right: 0;
@@ -76,6 +81,8 @@ nav {
   height: 100%;
   background: #596870;
 }
+
+/* main navigation buttons */
 .main-links {
   font-size: 1.3em;
   color: #fff;
@@ -88,6 +95,7 @@ nav {
 .main-links:hover {
   background: #7e92a1;
 }
+
 /* burger menu img */
 .menu {
   position: fixed;
@@ -98,21 +106,25 @@ nav {
   z-index: 1;
   margin: 0.8em 1.2em;
 }
+
 /* burger menu exit(li element)*/
 .exit-btn {
   text-align: right;
   padding: 0.5em 1em;
 }
+
 /* burger menu exit img */
 .exit-menu {
   width: 40px;
   height: 40px;
 }
+
 /* class of ul element of nav. To hide and show menu*/
 .hide-mobile {
   display: none;
 }
 
+/* ul element inside .main-links's li element */
 .dropdown {
   position: relative;
   width: 100%;
@@ -121,9 +133,11 @@ nav {
   transition: 0.3s;
   z-index: 3;
 }
+/* on hover to add this class to .dropdown and display dropdown items */
 .display-dropdown {
   display: block;
 }
+/* dropdown buttons */
 .dropdown li {
   text-transform: capitalize;
   line-height: 2em;
@@ -137,6 +151,29 @@ nav {
 .dropdown li a {
   color: #262e37;
 }
+
+/* =====
+path of the location on the page
+==== */
+.shop-path {
+  position: relative;
+  display: block;
+  font-weight: 600;
+  text-transform: capitalize;
+  top: 2em;
+  border-bottom: 2px solid #262e37;
+  margin: 0.5em;
+}
+.shop-path > h5 {
+  font-size: 1.4rem;
+  padding: 0.8em;
+}
+
+/* 
+=====
+aside element -> (.sidebar) to choose preffered shoes size
+=====
+*/
 .sidebar {
   width: 100%;
   position: relative;
@@ -158,6 +195,7 @@ nav {
   width: 25px;
   animation: rotateBack 0.3s;
 }
+
 @keyframes rotateBack {
   from {
     transform: rotate(180deg);
@@ -180,12 +218,15 @@ nav {
   }
 }
 
-.shoe-sizes-div {
+/* div inside details elemet */
+.inside-sidebar-details {
   padding: 1em 1em 1em 2em;
   background: #d4dfe6;
 }
-.shoe-sizes {
-  font-size: 1.7rem;
+
+/* label element inside details element */
+.shoes-sizes {
+  font-size: 1.8rem;
   line-height: 1.8em;
   font-weight: 400;
   color: #272938;
@@ -196,8 +237,111 @@ nav {
   margin-right: 0.5em;
 }
 
+/* =========================
+shoes container
+======================
+ */
+.shoes-container {
+  position: relative;
+  top: 3em;
+  margin-bottom: 4em;
+}
+
+/* div(.price-sort)  */
+.price-sort {
+  text-align: left;
+  margin: 1em 1em 1em 1.6em;
+}
+.price-sort p {
+  display: inline;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.price-sort select {
+  font-size: 1.2rem;
+  padding: 0.5em 1em;
+  border: unset;
+  margin: 0.5em;
+  margin-bottom: 3em;
+}
+.price-sort select:focus {
+  outline: unset;
+}
+
+/* products articles container */
+.products-container {
+  display: grid;
+  /* gap: 1rem; */
+  grid-gap: 8px 8px;
+  grid-template-columns: repeat(auto-fit, 300px);
+  justify-content: center;
+}
+
+/* article element inside products */
+.product {
+  position: relative;
+  cursor: pointer;
+  border-radius: 2px;
+  border: 1px solid #f2f2f2;
+  padding: 1em;
+  text-align: center;
+}
+
+.product-img {
+  width: 60%;
+  object-fit: contain;
+}
+.product footer {
+  text-align: center;
+  margin: 1em;
+  grid-column: 1 / span 4;
+}
+.product-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 0.8em;
+}
+.product-category {
+  color: #8d8d8d;
+}
+.product-name {
+  padding: 0.5em;
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+.product-name:hover {
+  color: #e98f4a;
+}
+/* ====== */
+
+/* -- part of footer -- */
+.footer-container {
+  width: 100%;
+  background-color: var(--secondaryColor);
+  text-align: center;
+  padding: 1em;
+  border-radius: 40px 40px 0 0;
+}
+.footer-logo {
+  color: #f5f5f5;
+  display: block;
+}
+.footer-links li {
+  display: inline-block;
+}
+.footer-links li a {
+  text-decoration: underline;
+  color: #92a4ad;
+  font-size: 0.8rem;
+}
+
+/*
+=========
+for better desktop experience 
+========= 
+*/
 /* =========
-@MEDIA SCREEN
+@MEDIA SCREEN...
 ============ */
 @media screen and (min-width: 930px) {
   .menu {
@@ -206,19 +350,25 @@ nav {
   .exit-btn {
     display: none;
   }
-
+  /* 
+  =====================
+  navigation part
+  =====================
+  */
   header,
   .nav-li-elements {
     height: 60px;
   }
   header {
     position: fixed;
+    background: white;
     z-index: 2;
   }
   nav {
     display: block;
     align-items: unset;
   }
+
   .nav-links {
     position: relative;
     display: flex;
@@ -226,21 +376,20 @@ nav {
     margin: 0 4em;
     background: unset;
     z-index: unset;
+    overflow-y: unset;
   }
 
   .nav-li-elements {
+    background: #fff;
     cursor: pointer;
     display: flex;
     position: relative;
-    background: white;
     align-items: center;
   }
   .nav-li-elements:hover {
     background: #f0f0f0;
   }
-  #home-nav-btn:hover {
-    border-bottom: unset;
-  }
+
   .main-links {
     font-size: 0.85rem;
     color: #000;
@@ -250,6 +399,7 @@ nav {
   .main-links:hover {
     background: unset;
   }
+
   .dropdown {
     position: absolute;
     display: inline;
@@ -257,9 +407,9 @@ nav {
     flex-wrap: wrap;
     visibility: hidden;
     top: -500%;
-    padding-top: 10px;
+    padding-top: 5px;
     z-index: -1;
-    background: unset;
+    background: white;
   }
   .nav-li-elements:hover .dropdown {
     visibility: visible;
@@ -269,25 +419,29 @@ nav {
     text-align: left;
   }
 
+  /* 
+  =====================
+  sidebar part
+  =====================
+  */
   .sidebar {
     position: fixed;
     width: 280px;
     height: 80%;
-    padding: 2em;
-    top: 15%;
+    margin: 2em 2.6em;
+    top: 120px;
     display: flex;
-    border-right: 1px solid gray;
   }
 
   .sidebar > details > summary {
     font-size: 1rem;
-    border-bottom: 1px solid gray;
+    border-bottom: 2px solid #262e37;
     background: #fff;
   }
   .arrow {
     width: unset;
   }
-  .shoe-sizes-div {
+  .inside-sidebar-details {
     margin: 0.5em 0;
     overflow-y: scroll;
     height: 80%;
@@ -296,22 +450,65 @@ nav {
   }
 
   /* width */
-  .shoe-sizes-div::-webkit-scrollbar {
+  .inside-sidebar-details::-webkit-scrollbar {
     width: 10px;
   }
 
   /* Handle */
-  .shoe-sizes-div::-webkit-scrollbar-thumb {
+  .inside-sidebar-details::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 10px;
   }
 
-  .shoe-sizes {
+  .shoes-sizes {
     font-size: 1.1rem;
     line-height: 2em;
   }
   [type="checkbox"] {
     width: 15px;
     height: 15px;
+  }
+
+  /* 
+  =====================
+  shoes part (price filter and products container)
+  =====================
+  */
+  .shoes-container {
+    position: relative;
+    width: calc(100% - 400px);
+    /* float: right; */
+    top: 8em;
+    margin-bottom: 9em;
+    left: 26%;
+  }
+
+  .price-filter {
+    text-align: right;
+  }
+
+  .price-filter select {
+    margin: 0.5em;
+  }
+
+  .shop-path {
+    top: 80px;
+    margin: 0.5em 2em;
+  }
+  .shop-path > h5 {
+    font-size: 0.85rem;
+    padding: 0.5em 0.5em 0.5em 2em;
+  }
+
+  .products-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(auto, 1fr));
+    grid-auto-rows: 300px;
+    /* margin: 3em 1em; */
+  }
+
+  .product-img {
+    width: 100%;
+    height: 160px;
   }
 }

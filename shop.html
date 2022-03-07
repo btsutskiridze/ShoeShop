@@ -30,93 +30,141 @@
               />
             </li>
             <li class="nav-li-elements">
-              <a href="index.html" class="main-links" id="home-nav-btn">home</a>
+              <a href="index.html" class="main-links">home</a>
             </li>
             <li class="nav-li-elements">
-              <a href="#" class="main-links">all</a>
+              <a href="#" class="main-links main-navigations" data-gender="all"
+                >all</a
+              >
               <ul class="dropdown">
-                <li><a href="#">classic shoes</a></li>
-                <li><a href="#">athletic shoes</a></li>
-                <li><a href="#">boots</a></li>
+                <li><a href="#" data-filter="classic">classic shoes</a></li>
+                <li>
+                  <a href="#" data-filter="athletic">athletic shoes</a>
+                </li>
+                <li><a href="#" data-filter="boots">boots</a></li>
               </ul>
             </li>
             <li class="nav-li-elements">
-              <a href="#" class="main-links">woman</a>
+              <a
+                href="#"
+                class="main-links main-navigations"
+                data-gender="female"
+                >woman</a
+              >
               <ul class="dropdown">
-                <li><a href="#">classic shoes</a></li>
-                <li><a href="#">athletic shoes</a></li>
-                <li><a href="#">boots</a></li>
+                <li><a href="#" data-filter="classic">classic shoes</a></li>
+                <li><a href="#" data-filter="athletic">athletic shoes</a></li>
+                <li><a href="#" data-filter="boots">boots</a></li>
               </ul>
             </li>
             <li class="nav-li-elements">
-              <a href="#" class="main-links">men</a>
+              <a href="#" class="main-links main-navigations" data-gender="male"
+                >men</a
+              >
               <ul class="dropdown">
-                <li><a href="#">classic shoes</a></li>
-                <li><a href="#">athletic shoes</a></li>
-                <li><a href="#">boots</a></li>
+                <li><a href="#" data-filter="classic">classic shoes</a></li>
+                <li><a href="#" data-filter="athletic">athletic shoes</a></li>
+                <li><a href="#" data-filter="boots">boots</a></li>
               </ul>
             </li>
             <li class="nav-li-elements">
-              <a href="#" class="main-links">children</a>
+              <a
+                href="#"
+                class="main-links main-navigations"
+                data-gender="children"
+                >children</a
+              >
               <ul class="dropdown">
-                <li><a href="#">classic shoes</a></li>
-                <li><a href="#">athletic shoes</a></li>
-                <li><a href="#">boots</a></li>
+                <li><a href="#" data-filter="classic">classic shoes</a></li>
+                <li><a href="#" data-filter="athletic">athletic shoes</a></li>
+                <li><a href="#" data-filter="boots">boots</a></li>
               </ul>
             </li>
           </ul>
         </nav>
       </header>
+      <div class="shop-path" id="shop-path"><h5>all /</h5></div>
       <aside class="sidebar" id="side-bar">
         <details>
           <summary>
             filter by size
             <img src="./images/arrow.svg" class="arrow" alt="arrow" />
           </summary>
-          <div class="shoe-sizes-div">
+          <div class="inside-sidebar-details">
             <input type="checkbox" name="size1" value="size1" />
-            <label for="size1" class="shoe-sizes">4.0</label><br />
+            <label for="size1" class="shoes-sizes">4.0</label><br />
 
             <input type="checkbox" name="size2" value="size2" />
-            <label for="size2" class="shoe-sizes">5.0</label><br />
+            <label for="size2" class="shoes-sizes">5.0</label><br />
 
             <input type="checkbox" name="size3" value="size3" />
-            <label for="size3" class="shoe-sizes">6.0</label><br />
+            <label for="size3" class="shoes-sizes">6.0</label><br />
 
             <input type="checkbox" name="size3" value="size3" />
-            <label for="size3" class="shoe-sizes">7.0</label><br />
+            <label for="size3" class="shoes-sizes">7.0</label><br />
 
             <input type="checkbox" name="size4" value="size4" />
-            <label for="size4" class="shoe-sizes">8.0</label><br />
+            <label for="size4" class="shoes-sizes">8.0</label><br />
 
             <input type="checkbox" name="size5" value="size5" />
-            <label for="size5" class="shoe-sizes">9.0</label><br />
+            <label for="size5" class="shoes-sizes">9.0</label><br />
 
             <input type="checkbox" name="size6" value="size6" />
-            <label for="size6" class="shoe-sizes">9.5</label><br />
+            <label for="size6" class="shoes-sizes">9.5</label><br />
 
             <input type="checkbox" name="size7" value="size7" />
-            <label for="size7" class="shoe-sizes">10.0</label><br />
+            <label for="size7" class="shoes-sizes">10.0</label><br />
 
             <input type="checkbox" name="size8" value="size8" />
-            <label for="size8" class="shoe-sizes">10.5</label><br />
+            <label for="size8" class="shoes-sizes">10.5</label><br />
 
             <input type="checkbox" name="size10" value="size10" />
-            <label for="size10" class="shoe-sizes">11.0</label><br />
+            <label for="size10" class="shoes-sizes">11.0</label><br />
 
             <input type="checkbox" name="size11" value="size11" />
-            <label for="size11" class="shoe-sizes">11.5</label><br />
+            <label for="size11" class="shoes-sizes">11.5</label><br />
 
             <input type="checkbox" name="size12" value="size12" />
-            <label for="size12" class="shoe-sizes">12.0</label><br />
+            <label for="size12" class="shoes-sizes">12.0</label><br />
 
             <input type="checkbox" name="size13" value="size13" />
-            <label for="size13" class="shoe-sizes">12.5</label><br />
+            <label for="size13" class="shoes-sizes">12.5</label><br />
           </div>
         </details>
       </aside>
+      <div class="shoes-container">
+        <div class="price-sort">
+          <p>sort by:</p>
+          <select name="price" id="price-select">
+            <option value="low-to-high" id="sort-option-1">low to high</option>
+            <option value="low-to-high" id="sort-option-2">high to low</option>
+          </select>
+        </div>
+        <div class="products-container">
+          <article class="product">
+            <img src="" class="product-img img" alt="" />
+            <footer>
+              <h5 class="product-name">high-back bench</h5>
+              <h6 class="product-category"></h6>
+              <span class="product-price">$9.99</span>
+            </footer>
+          </article>
+        </div>
+      </div>
     </div>
+    <footer>
+      <div>
+        <div class="footer-container">
+          <a href="#" class="logo footer-logo">SHOEshop</a>
+          <ul class="footer-links">
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./javascript/products.js"></script>
     <script src="./javascript/shop.js"></script>
   </body>
 </html>
