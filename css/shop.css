@@ -141,14 +141,13 @@ nav {
 .dropdown li {
   text-transform: capitalize;
   line-height: 2em;
-  font-size: 1em;
-  padding: 0 0 0 15px;
   text-align: center;
 }
 .dropdown li:hover {
   background: #f0f0f0;
 }
 .dropdown li a {
+  font-size: 1em;
   color: #262e37;
 }
 
@@ -259,7 +258,8 @@ shoes container
 }
 .price-sort select {
   font-size: 1.2rem;
-  padding: 0.5em 1em;
+  width: 200px;
+  padding: 0.5em;
   border: unset;
   margin: 0.5em;
   margin-bottom: 3em;
@@ -418,6 +418,12 @@ for better desktop experience
   .dropdown li {
     text-align: left;
   }
+  .dropdown li a {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    padding-left: 14px;
+  }
 
   /* 
   =====================
@@ -507,6 +513,11 @@ for better desktop experience
     /* margin: 3em 1em; */
   }
 
+  .product:hover {
+    background: #f0f3f5;
+    transform: scale(1.3, 1.3);
+    z-index: 1;
+  }
   .product-img {
     width: 100%;
     height: 160px;

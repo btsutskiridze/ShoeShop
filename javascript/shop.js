@@ -160,6 +160,10 @@ const filterOpt2 = document.querySelector("#sort-option-2");
 // });
 
 selectOption.addEventListener("change", function () {
+  if (selectOption.value === "featured") {
+    shuffle(filteredProducts);
+    displayProducts(filteredProducts);
+  }
   if (selectOption.value === "low-to-high") {
     filteredProducts.sort(function (a, b) {
       return a.price - b.price;
