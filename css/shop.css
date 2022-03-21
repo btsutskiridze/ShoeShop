@@ -12,6 +12,12 @@ Variable
 */
 :root {
   --secondaryColor: #30383d;
+  --whiteColor: #fff;
+  --blackColor: #000;
+  --darkBlue: #2d3742;
+  --grayBlue: #596870;
+  --grayWhiteBlue: #7e92a1;
+  --lightGray: #acb5be;
 }
 
 /*=============== Global Styles===============*/
@@ -43,7 +49,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #000;
+  color: var(--blackColor);
 }
 li {
   list-style-type: none;
@@ -51,7 +57,7 @@ li {
 header {
   display: flex;
   position: relative;
-  background: #fff;
+  background: var(--whiteColor);
   padding: 0.8em 1.2em;
   width: 100%;
   top: 0;
@@ -66,7 +72,7 @@ nav {
 
 .logo {
   font-size: 1.5rem;
-  color: #2d3742;
+  color: var(--darkBlue);
   font-weight: 800;
 }
 
@@ -79,23 +85,22 @@ nav {
   right: 0;
   width: 60%;
   height: 100%;
-  background: #596870;
+  background: var(--grayBlue);
 }
 
 /* main navigation buttons */
 .main-links {
   font-size: 1.3em;
-  color: #fff;
+  color: var(--whiteColor);
   display: block;
   width: 100%;
   padding: 1em 2em;
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
 }
 .main-links:hover {
   background: #7e92a1;
 }
-
 /* burger menu img */
 .menu {
   position: fixed;
@@ -129,7 +134,7 @@ nav {
   position: relative;
   width: 100%;
   display: none;
-  background: #acb5be;
+  background: var(--lightGray);
   transition: 0.3s;
   z-index: 3;
 }
@@ -187,7 +192,7 @@ aside element -> (.sidebar) to choose preffered shoes size
   width: 100%;
   font-weight: 500;
   font-size: 1.5rem;
-  background: #acb5be;
+  background: var(--lightGray);
 }
 .arrow {
   margin-left: 0.5em;
@@ -312,15 +317,21 @@ shoes container
 .product-name:hover {
   color: #e98f4a;
 }
+#load-more {
+  font-size: 2rem;
+  margin: 3em;
+}
 /* ====== */
 
 /* -- part of footer -- */
 .footer-container {
-  width: 100%;
+  width: 80%;
   background-color: var(--secondaryColor);
   text-align: center;
+  float: right;
   padding: 1em;
   border-radius: 40px 40px 0 0;
+  margin-top: 10em;
 }
 .footer-logo {
   color: #f5f5f5;
@@ -380,7 +391,7 @@ for better desktop experience
   }
 
   .nav-li-elements {
-    background: #fff;
+    background: var(--whiteColor);
     cursor: pointer;
     display: flex;
     position: relative;
@@ -392,7 +403,7 @@ for better desktop experience
 
   .main-links {
     font-size: 0.85rem;
-    color: #000;
+    color: var(--blackColor);
     padding: 0em 3.8em;
     font-weight: 600;
   }
@@ -441,8 +452,12 @@ for better desktop experience
 
   .sidebar > details > summary {
     font-size: 1rem;
-    border-bottom: 2px solid #262e37;
-    background: #fff;
+    background: #d6e0ee;
+    padding-left: 2em;
+    padding-right: 2em;
+    border-radius: 5px;
+    /* border-bottom: 1px solid #262e37; */
+    /* background: var(--whiteColor); */
   }
   .arrow {
     width: unset;
@@ -452,7 +467,7 @@ for better desktop experience
     overflow-y: scroll;
     height: 80%;
     width: 100%;
-    background: #fff;
+    background: var(--whiteColor);
   }
 
   /* width */
@@ -495,6 +510,10 @@ for better desktop experience
 
   .price-filter select {
     margin: 0.5em;
+    font-size: 1rem;
+  }
+  .price-sort p {
+    font-size: 1.2rem;
   }
 
   .shop-path {
@@ -510,12 +529,13 @@ for better desktop experience
     display: grid;
     grid-template-columns: repeat(4, minmax(auto, 1fr));
     grid-auto-rows: 300px;
-    /* margin: 3em 1em; */
   }
-
+  .product {
+    transition: transform 0.5s;
+  }
   .product:hover {
     background: #f0f3f5;
-    transform: scale(1.3, 1.3);
+    transform: scale(1.2, 1.2);
     z-index: 1;
   }
   .product-img {

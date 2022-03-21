@@ -36,13 +36,10 @@ exit.addEventListener("click", function (e) {
   });
 });
 
-// shoes part
-let filteredProducts = [...products];
-
+// function to randomize array elemets
 function shuffle(array) {
   let currentIndex = array.length,
     randomIndex;
-
   // While there remain elements to shuffle...
   while (currentIndex != 0) {
     // Pick a remaining element...
@@ -55,40 +52,96 @@ function shuffle(array) {
       array[currentIndex],
     ];
   }
-
   return array;
 }
-shuffle(filteredProducts);
 
-const productsContainer = document.querySelector(".products-container");
+let showSizesArray = []; //Where the filtered sizes get stored
+let categoryItemsCopy = [...categoryItems];
+shuffle(categoryItemsCopy);
 
-const displayProducts = (shoeproducts) => {
-  if (shoeproducts.length < 1) {
-    productsContainer.innerHTML = `<h6>Sorry, no products matched your search</h6>`;
-    return;
+$(document).ready(function () {
+  showItems(categoryItemsCopy); //Display all items with no filter applied
+
+  $(".shoes-sizes-input").click(function () {
+    //When a checkbox is clicked
+    let sizeClicked = $(this).attr("data-size"); //The certain size checkbox clicked
+
+    if ($(this).is(":checked")) {
+      showSizesArray.push(sizeClicked); //Was not checked so add to filter array
+      showItemsFiltered(); //Show items grid with filters
+    } else {
+      //Unchecked so remove from the array
+      showSizesArray = showSizesArray.filter(function (elem) {
+        return elem !== sizeClicked;
+      });
+      showItemsFiltered(); //Show items grid with new filters
+    }
+
+    if (!$("input[type=checkbox]").is(":checked")) {
+      //No checkboxes are checked
+      showSizesArray = []; //Clear size filter array
+      showItems(categoryItemsCopy); //Show all items with NO filters applied
+    }
+  });
+});
+
+function showItems(items) {
+  //Default grid to show all items on page load in
+
+  $("#display-shoes-div").empty();
+  const warning = `<h6>Sorry, no products matched your search</h6>`;
+  if (items.length < 1) {
+    $("#display-shoes-div").append(warning);
   }
+  for (let i = 0; i < items.length; i++) {
+    let itemContent = `<article class="product" data-shoeGender="${items[i].gender}" 
+    data-available-sizes =" ${items[i].size}">
+    <img
+      src="${items[i].image}"
+      class="product-img img"
+      alt=""
+      
+    />
+    <footer>
+      <h5 class="product-name">${items[i].title}</h5>
+      <h6 class="product-category"> ${items[i].type} Shoes </h6> 
+      <span class="product-price">${items[i].price}$</span>
+    </footer>
+  </article>`;
+    $("#display-shoes-div").append(itemContent);
+  }
+}
 
-  productsContainer.innerHTML = shoeproducts
-    .map((product) => {
-      const { title, image, price, gender } = product;
-      return `<article class="product" data-shoeGender="${gender}">
-          <img
-            src="${image}"
-            class="product-img img"
-            alt=""
-            
-          />
-          <footer>
-            <h5 class="product-name">${title}</h5>
-            <h6 class="product-category"> ${gender}'s Shoe </h6> 
-            <span class="product-price">${price}$</span>
-          </footer>
-        </article>`;
-    })
-    .join("");
-};
-
-displayProducts(filteredProducts);
+function showItemsFiltered() {
+  //Default grid to show all items on page load in
+  $("#display-shoes-div").empty();
+  let count = 0;
+  for (let i = 0; i < categoryItemsCopy.length; i++) {
+    //Go through the items but only show items that have size from showSizesArray
+    if (showSizesArray.some((v) => categoryItemsCopy[i].size.includes(v))) {
+      let itemContent = `<article class="product" data-shoeGender="${categoryItemsCopy[i].gender}" 
+      data-available-sizes =" ${categoryItemsCopy[i].size}">
+      <img
+        src="${categoryItemsCopy[i].image}"
+        class="product-img img"
+        alt=""
+        
+      />
+      <footer>
+        <h5 class="product-name">${categoryItemsCopy[i].title}</h5>
+        <h6 class="product-category"> ${categoryItemsCopy[i].type} Shoes </h6> 
+        <span class="product-price">${categoryItemsCopy[i].price}$</span>
+      </footer>
+    </article>`;
+      $("#display-shoes-div").append(itemContent); //Display in grid
+      count++;
+    }
+  }
+  const warning = `<h6>Sorry, no products matched your search</h6>`;
+  if (count < 1) {
+    $("#display-shoes-div").append(warning);
+  }
+}
 
 const mainBtns = document.querySelectorAll(".main-navigations");
 const shoes = document.querySelectorAll(".product");
@@ -97,11 +150,11 @@ const dropdownChildren = document.querySelectorAll(".dropdown>li>a");
 
 dropdownChildren.forEach((item) => {
   item.addEventListener("click", function (e) {
-    filteredProducts = [...products];
+    categoryItemsCopy = [...categoryItems];
     const el = e.target;
     const genderEl =
       el.parentElement.parentElement.parentElement.firstElementChild;
-    const foundType = filteredProducts.filter((v) => {
+    const filteredByType = categoryItemsCopy.filter((v) => {
       if (genderEl.dataset.gender === "all" && v.type === el.dataset.filter) {
         shopPath.innerHTML = `<h5>all / ${el.dataset.filter}</h5>`;
         return v;
@@ -118,16 +171,16 @@ dropdownChildren.forEach((item) => {
         shopPath.innerHTML = `<h5> all / ${genderEl.dataset.gender} / ${el.dataset.filter}</h5>`;
       }
     });
-    filteredProducts = foundType;
-    displayProducts(filteredProducts);
+    categoryItemsCopy = filteredByType;
+    showItems(categoryItemsCopy);
   });
 });
 
 mainBtns.forEach((item) => {
   item.addEventListener("click", function (e) {
-    filteredProducts = [...products];
+    categoryItemsCopy = [...categoryItems];
     const el = e.target;
-    const newArr = filteredProducts.filter(function (shoe) {
+    const filteredByGender = categoryItemsCopy.filter(function (shoe) {
       if (el.dataset.gender === "all") {
         shopPath.innerHTML = `<h5>all /</h5>`;
         return shoe;
@@ -136,9 +189,9 @@ mainBtns.forEach((item) => {
         return shoe;
       }
     });
-    filteredProducts = newArr;
-    shuffle(filteredProducts);
-    displayProducts(filteredProducts);
+    categoryItemsCopy = filteredByGender;
+    shuffle(categoryItemsCopy);
+    showItems(categoryItemsCopy);
   });
 });
 
@@ -146,33 +199,20 @@ const selectOption = document.querySelector("#select-options");
 const filterOpt1 = document.querySelector("#sort-option-1");
 const filterOpt2 = document.querySelector("#sort-option-2");
 
-// filterOpt1.addEventListener("click", function () {
-//   filteredProducts.sort(function (a, b) {
-//     return a.price - b.price;
-//   });
-//   displayProducts(filteredProducts);
-// });
-// filterOpt2.addEventListener("click", function () {
-//   filteredProducts.sort(function (a, b) {
-//     return b.price - a.price;
-//   });
-//   displayProducts(filteredProducts);
-// });
-
 selectOption.addEventListener("change", function () {
   if (selectOption.value === "featured") {
-    shuffle(filteredProducts);
-    displayProducts(filteredProducts);
+    shuffle(categoryItemsCopy);
+    showItems(categoryItemsCopy);
   }
   if (selectOption.value === "low-to-high") {
-    filteredProducts.sort(function (a, b) {
+    categoryItemsCopy.sort(function (a, b) {
       return a.price - b.price;
     });
-    displayProducts(filteredProducts);
+    showItems(categoryItemsCopy);
   } else if (selectOption.value === "high-to-low") {
-    filteredProducts.sort(function (a, b) {
+    categoryItemsCopy.sort(function (a, b) {
       return b.price - a.price;
     });
-    displayProducts(filteredProducts);
+    showItems(categoryItemsCopy);
   }
 });
