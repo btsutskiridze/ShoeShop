@@ -325,10 +325,9 @@ shoes container
 
 /* -- part of footer -- */
 .footer-container {
-  width: 80%;
+  /* width: 80%; */
   background-color: var(--secondaryColor);
   text-align: center;
-  float: right;
   padding: 1em;
   border-radius: 40px 40px 0 0;
   margin-top: 10em;
@@ -445,18 +444,18 @@ for better desktop experience
     position: fixed;
     width: 280px;
     height: 80%;
-    margin: 2em 2.6em;
+    margin: 2em;
     top: 120px;
     display: flex;
   }
 
   .sidebar > details > summary {
-    font-size: 1rem;
+    font-size: 0.99rem;
     background: #d6e0ee;
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
     border-radius: 5px;
-    /* border-bottom: 1px solid #262e37; */
+    /* border-bottom: 2px solid var(--darkBlue); */
     /* background: var(--whiteColor); */
   }
   .arrow {
@@ -501,19 +500,22 @@ for better desktop experience
     /* float: right; */
     top: 8em;
     margin-bottom: 9em;
-    left: 26%;
+    left: 23%;
   }
 
-  .price-filter {
+  .price-sort {
     text-align: right;
+    margin-right: 0;
   }
 
-  .price-filter select {
+  .price-sort select {
     margin: 0.5em;
+    margin-right: 0;
     font-size: 1rem;
+    width: 170px;
   }
   .price-sort p {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .shop-path {
@@ -539,7 +541,12 @@ for better desktop experience
     z-index: 1;
   }
   .product-img {
-    width: 100%;
+    width: 90%;
     height: 160px;
+  }
+
+  .footer-container {
+    float: right;
+    width: 80%;
   }
 }

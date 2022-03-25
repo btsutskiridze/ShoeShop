@@ -207,16 +207,20 @@ nav ul li a:hover {
   border-bottom: 2px solid #fff;
 }
 .about-container img {
-  max-width: 90%;
-  object-fit: cover;
+  width: 400px;
+  max-width: 100%;
+  object-fit: contain;
   border-radius: 20px;
   padding: 0.5em;
+}
+.about-container div {
+  margin: 0 auto;
 }
 .about-container div p {
   text-align: left;
   color: #fff;
-  font-size: 1.5rem;
-  padding: 0.5em 1.3em;
+  font-size: 1.2rem;
+  padding: 0.5em 1em;
 }
 
 /* -- part of footer -- */
@@ -276,6 +280,7 @@ for better desktop experience
     color: #000;
     padding: 0 3em;
     font-weight: 600;
+    transition: transform 0.3s;
   }
   nav ul li a:hover {
     background: unset;
@@ -299,13 +304,20 @@ for better desktop experience
 @media screen and (min-width: 1010px) {
   .about-container {
     display: flex;
+    justify-content: center;
     padding: 4em;
   }
   .about-container img {
-    width: 500px;
-    margin: 3em;
-    border-radius: 0 20% 20% 0;
+    width: 400px;
+    margin: 1em;
+    /* border-radius: 0 20% 20% 0; */
   }
+
+  .about-container div {
+    width: 45%;
+    margin: 0;
+  }
+
   .about-container div p {
     margin: 1em;
     text-align: right;

@@ -147,9 +147,18 @@ const mainBtns = document.querySelectorAll(".main-navigations");
 const shoes = document.querySelectorAll(".product");
 const shopPath = document.getElementById("shop-path");
 const dropdownChildren = document.querySelectorAll(".dropdown>li>a");
+const shoesSizes = document.querySelectorAll("shoes-sizes-div");
+
+function reloadCheckboxes() {
+  $('input[type="checkbox"]').each(function () {
+    $(this).prop("checked", false);
+  });
+}
+$(window).on("load", reloadCheckboxes());
 
 dropdownChildren.forEach((item) => {
   item.addEventListener("click", function (e) {
+    reloadCheckboxes();
     categoryItemsCopy = [...categoryItems];
     const el = e.target;
     const genderEl =
@@ -179,6 +188,7 @@ dropdownChildren.forEach((item) => {
 mainBtns.forEach((item) => {
   item.addEventListener("click", function (e) {
     categoryItemsCopy = [...categoryItems];
+    reloadCheckboxes();
     const el = e.target;
     const filteredByGender = categoryItemsCopy.filter(function (shoe) {
       if (el.dataset.gender === "all") {
@@ -200,6 +210,7 @@ const filterOpt1 = document.querySelector("#sort-option-1");
 const filterOpt2 = document.querySelector("#sort-option-2");
 
 selectOption.addEventListener("change", function () {
+  reloadCheckboxes();
   if (selectOption.value === "featured") {
     shuffle(categoryItemsCopy);
     showItems(categoryItemsCopy);
@@ -216,3 +227,14 @@ selectOption.addEventListener("change", function () {
     showItems(categoryItemsCopy);
   }
 });
+
+// $("#load-more").click(function () {
+//   if (itemsQuantity < categoryItemsCopy.length) {
+//     itemsQuantity += 4;
+//     // $(this).textContent = "no";
+//     // console.log("no");
+//   } else {
+//     document.getElementById("load-more").innerHTML = "All Products Displayed";
+//   }
+//   showItems(categoryItemsCopy);
+// });

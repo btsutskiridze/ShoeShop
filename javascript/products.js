@@ -29,19 +29,7 @@ let categoryItems = [
     price: 85.0,
     type: "athletic",
     gender: "man",
-    size: [
-      "6",
-      "7",
-      "8",
-      " 9",
-      "9.5",
-      "10",
-      "10.5",
-      "11",
-      "11.5",
-      "12",
-      "12.5",
-    ],
+    size: [" 9", "11", "11.5", "12", "12.5"],
   },
   {
     title: "men shoes",
@@ -65,7 +53,7 @@ let categoryItems = [
     price: 217.5,
     type: "classic",
     gender: "man",
-    size: ["6", "7", "8", "9", "9.5", "10", "10.5", "11", "11.5", "12", "12.5"],
+    size: ["6", "7", "8", "9", "9.5", "10", "10.5"],
   },
   {
     title: "men shoes",
@@ -81,7 +69,7 @@ let categoryItems = [
     price: 45.0,
     type: "boots",
     gender: "man",
-    size: ["5", "6", "7", "8", "9", "9.5", "10", "10.5", "11", "12.5"],
+    size: ["5", "6", "7", "9.5", "11", "12.5"],
   },
   {
     title: "men shoes",
@@ -89,7 +77,7 @@ let categoryItems = [
     price: 92.0,
     type: "boots",
     gender: "man",
-    size: ["6", "7", "8", "9", "9.5", "10, 11", "12", "12.5"],
+    size: ["10, 11", "12", "12.5"],
   },
   {
     title: "women shoes",
@@ -97,7 +85,7 @@ let categoryItems = [
     price: 32.98,
     type: "athletic",
     gender: "woman",
-    size: ["6", "7", "8", "9", "9.5", "10", "10.5", "11", "11.5", "12", "12.5"],
+    size: ["6", "7", "8", "9", "9.5", "10", "10.5"],
   },
   {
     title: "women shoes",
@@ -138,7 +126,7 @@ let categoryItems = [
     price: 39.99,
     type: "classic",
     gender: "woman",
-    size: ["9", "9.5", "10", "10.5", "11", "11.5", "12"],
+    size: ["9", "9.5", "10", "12"],
   },
   {
     title: "women shoes",
@@ -167,7 +155,7 @@ let categoryItems = [
   },
   {
     title: "children shoes",
-    image: "https://m.media-amazon.com/images/I/715VYWzpTKL._AC_UL320_.jpg",
+    image: "https://tinyurl.com/279jmkcn",
     price: 52.99,
     type: "boots",
     gender: "children",
