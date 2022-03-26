@@ -1,9 +1,24 @@
-// burger menu icon img
-var menu = document.getElementById("menu");
-//ul element of navigation
-var nav = document.getElementById("nav");
-//burger menu exit (li element)
-var exit = document.getElementById("exit");
+const menu = document.getElementById("menu"); // burger menu icon img
+
+const nav = document.getElementById("nav"); //ul element of navigation
+
+const exit = document.getElementById("exit"); //burger menu exit (li element)
+
+const mainBtns = document.querySelectorAll(".main-navigations"); //main navigations a element
+
+const shoes = document.querySelectorAll(".product"); //to access each shoes container
+
+const shopPath = document.getElementById("shop-path"); //location path above products
+
+const dropdownChildren = document.querySelectorAll(".dropdown>li>a"); //dropdown menu elements
+
+const shoesSizes = document.querySelectorAll("shoes-sizes-div"); //whole all shoes and price filter container
+
+let showSizesArray = []; //Where the filtered sizes get stored
+
+let categoryItemsCopy = [...categoryItems]; //copy data from products.js file
+
+const selectOption = document.querySelector("#select-options"); //select element
 
 //addEventListener to toogle class 'hide-mobile' to hide and show menu
 menu.addEventListener("click", function (e) {
@@ -11,20 +26,18 @@ menu.addEventListener("click", function (e) {
   e.preventDefault();
 });
 
-//to exit menu
+//to exit menu and add class 'hide-mobile'
 exit.addEventListener("click", function (e) {
   nav.classList.add("hide-mobile");
 });
 
 // using jquery for mobile responsivity
 //to open main navigations's  dropdown elements
-
 $(".main-navigations").click(function () {
   //when one main navigation button opens its dropdown elements
   // other main navigation button's dropdowns will be hidden
   const dropdownEl = $(".main-navigations").not(this).siblings(".dropdown");
   dropdownEl.removeClass("display-dropdown");
-
   //to open clicked one
   $(this).siblings(".dropdown").toggleClass("display-dropdown");
 });
@@ -36,27 +49,7 @@ exit.addEventListener("click", function (e) {
   });
 });
 
-// function to randomize array elemets
-function shuffle(array) {
-  let currentIndex = array.length,
-    randomIndex;
-  // While there remain elements to shuffle...
-  while (currentIndex != 0) {
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
-  }
-  return array;
-}
-
-let showSizesArray = []; //Where the filtered sizes get stored
-let categoryItemsCopy = [...categoryItems];
+//shuffle array so items wil be displayed randomly
 shuffle(categoryItemsCopy);
 
 $(document).ready(function () {
@@ -85,12 +78,44 @@ $(document).ready(function () {
   });
 });
 
+//================
+//global functions
+//================
+
+//function to randomize array elemets
+function shuffle(array) {
+  let currentIndex = array.length,
+    randomIndex;
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+  return array;
+}
+
+//function to reset checkbox when called
+function reloadCheckboxes() {
+  $('input[type="checkbox"]').each(function () {
+    $(this).prop("checked", false);
+  });
+}
+
+//function to display array of objects
 function showItems(items) {
   //Default grid to show all items on page load in
-
   $("#display-shoes-div").empty();
-  const warning = `<h6>Sorry, no products matched your search</h6>`;
+
   if (items.length < 1) {
+    //if no item were found
+    const warning = `<img id="nothing-found" src="./images/nothing-found-2.png" alt="nothing found">`;
     $("#display-shoes-div").append(warning);
   }
   for (let i = 0; i < items.length; i++) {
@@ -108,13 +133,17 @@ function showItems(items) {
       <span class="product-price">${items[i].price}$</span>
     </footer>
   </article>`;
+    //appending products;
     $("#display-shoes-div").append(itemContent);
   }
 }
 
+//function to display elements filtered by size
 function showItemsFiltered() {
   //Default grid to show all items on page load in
   $("#display-shoes-div").empty();
+
+  //using count for counting found items
   let count = 0;
   for (let i = 0; i < categoryItemsCopy.length; i++) {
     //Go through the items but only show items that have size from showSizesArray
@@ -137,104 +166,96 @@ function showItemsFiltered() {
       count++;
     }
   }
-  const warning = `<h6>Sorry, no products matched your search</h6>`;
   if (count < 1) {
+    const warning = `<img id="nothing-found" src="./images/nothing-found-2.png" alt="nothing found">`;
     $("#display-shoes-div").append(warning);
   }
 }
 
-const mainBtns = document.querySelectorAll(".main-navigations");
-const shoes = document.querySelectorAll(".product");
-const shopPath = document.getElementById("shop-path");
-const dropdownChildren = document.querySelectorAll(".dropdown>li>a");
-const shoesSizes = document.querySelectorAll("shoes-sizes-div");
-
-function reloadCheckboxes() {
-  $('input[type="checkbox"]').each(function () {
-    $(this).prop("checked", false);
-  });
-}
+//refreshing checkbox on reload
 $(window).on("load", reloadCheckboxes());
 
-dropdownChildren.forEach((item) => {
-  item.addEventListener("click", function (e) {
-    reloadCheckboxes();
-    categoryItemsCopy = [...categoryItems];
-    const el = e.target;
-    const genderEl =
-      el.parentElement.parentElement.parentElement.firstElementChild;
-    const filteredByType = categoryItemsCopy.filter((v) => {
-      if (genderEl.dataset.gender === "all" && v.type === el.dataset.filter) {
-        shopPath.innerHTML = `<h5>all / ${el.dataset.filter}</h5>`;
-        return v;
-      } else if (
-        v.gender === genderEl.dataset.gender &&
-        v.type === el.dataset.filter
-      ) {
-        shopPath.innerHTML = `<h5> all / ${genderEl.dataset.gender} / ${el.dataset.filter}</h5>`;
-        return v;
-      } else if (
-        v.gender === genderEl.dataset.gender &&
-        v.type !== el.dataset.filter
-      ) {
-        shopPath.innerHTML = `<h5> all / ${genderEl.dataset.gender} / ${el.dataset.filter}</h5>`;
-      }
-    });
-    categoryItemsCopy = filteredByType;
-    showItems(categoryItemsCopy);
-  });
-});
+//====================
+//buttons modification
+//====================
 
+//filtering products by each navigation button click
 mainBtns.forEach((item) => {
   item.addEventListener("click", function (e) {
-    categoryItemsCopy = [...categoryItems];
-    reloadCheckboxes();
+    categoryItemsCopy = [...categoryItems]; //reset products array
+    reloadCheckboxes(); //refresh checkboxes
     const el = e.target;
-    const filteredByGender = categoryItemsCopy.filter(function (shoe) {
+
+    //filtering products array by gender category
+    categoryItemsCopy = categoryItemsCopy.filter((sh) => {
       if (el.dataset.gender === "all") {
-        shopPath.innerHTML = `<h5>all /</h5>`;
-        return shoe;
-      } else if (shoe.gender === el.dataset.gender) {
-        shopPath.innerHTML = `<h5> all / ${el.textContent}</h5>`;
-        return shoe;
+        //if data-gender equals 'all'
+        shopPath.innerHTML = `<h5>all /</h5>`; //modifying location path
+        return sh;
+      } else if (sh.gender === el.dataset.gender) {
+        // if products array objects gender is same as data-gender of navigation link
+        shopPath.innerHTML = `<h5> all / ${el.textContent}</h5>`; //modifying location path
+        return sh;
       }
     });
-    categoryItemsCopy = filteredByGender;
-    shuffle(categoryItemsCopy);
-    showItems(categoryItemsCopy);
+    // categoryItemsCopy = filteredByGender;
+    shuffle(categoryItemsCopy); //shuffle array
+    showItems(categoryItemsCopy); //display array
   });
 });
 
-const selectOption = document.querySelector("#select-options");
-const filterOpt1 = document.querySelector("#sort-option-1");
-const filterOpt2 = document.querySelector("#sort-option-2");
+//filtering products by each dropdown navigation button click
+dropdownChildren.forEach((item) => {
+  item.addEventListener("click", function (e) {
+    categoryItemsCopy = [...categoryItems]; //reset products array
+    reloadCheckboxes(); //refresh checkboxes
+    const el = e.target;
+    const genderEl = //accessing gender link from dropdown children element to use for comparison
+      el.parentElement.parentElement.parentElement.firstElementChild;
 
+    //filtering products array by gender category
+    categoryItemsCopy = categoryItemsCopy.filter((sh) => {
+      //below checking which main navigation button was clicked
+      //and comparing dropdown elements data-filter to array object's (sh) type
+      if (genderEl.dataset.gender === "all" && sh.type === el.dataset.filter) {
+        shopPath.innerHTML = `<h5>all / ${el.dataset.filter}</h5>`;
+        return sh;
+      } else if (
+        sh.gender === genderEl.dataset.gender &&
+        sh.type === el.dataset.filter
+      ) {
+        shopPath.innerHTML = `<h5> all / ${genderEl.dataset.gender} / ${el.dataset.filter}</h5>`;
+        return sh;
+      } else if (
+        sh.gender === genderEl.dataset.gender &&
+        sh.type !== el.dataset.filter
+      ) {
+        shopPath.innerHTML = `<h5> all / ${genderEl.dataset.gender} / ${el.dataset.filter}</h5>`;
+      }
+    });
+    showItems(categoryItemsCopy); //display array
+  });
+});
+
+//modifying products array depending option selected
 selectOption.addEventListener("change", function () {
   reloadCheckboxes();
   if (selectOption.value === "featured") {
-    shuffle(categoryItemsCopy);
-    showItems(categoryItemsCopy);
+    //if selected option is featured
+    shuffle(categoryItemsCopy); //just shufflig array
+    showItems(categoryItemsCopy); //and displaing
   }
   if (selectOption.value === "low-to-high") {
     categoryItemsCopy.sort(function (a, b) {
+      //sorting by price low to high
       return a.price - b.price;
     });
-    showItems(categoryItemsCopy);
+    showItems(categoryItemsCopy); //displaying
   } else if (selectOption.value === "high-to-low") {
+    //sorting by price high to low
     categoryItemsCopy.sort(function (a, b) {
       return b.price - a.price;
     });
-    showItems(categoryItemsCopy);
+    showItems(categoryItemsCopy); //displaying
   }
 });
-
-// $("#load-more").click(function () {
-//   if (itemsQuantity < categoryItemsCopy.length) {
-//     itemsQuantity += 4;
-//     // $(this).textContent = "no";
-//     // console.log("no");
-//   } else {
-//     document.getElementById("load-more").innerHTML = "All Products Displayed";
-//   }
-//   showItems(categoryItemsCopy);
-// });
