@@ -353,6 +353,7 @@ for better desktop experience
 /* =========
 @MEDIA SCREEN...
 ============ */
+
 @media screen and (min-width: 930px) {
   .menu {
     display: none;
@@ -501,7 +502,7 @@ for better desktop experience
     /* float: right; */
     top: 8em;
     margin-bottom: 9em;
-    left: 24%;
+    left: 27%;
   }
 
   .price-sort {
@@ -530,7 +531,7 @@ for better desktop experience
 
   .products-container {
     display: grid;
-    grid-template-columns: repeat(4, minmax(auto, 1fr));
+    grid-template-columns: repeat(3, minmax(auto, 1fr));
     grid-auto-rows: 300px;
   }
   .product {
@@ -545,9 +546,21 @@ for better desktop experience
     width: 90%;
     height: 160px;
   }
-
+  #nothing-found {
+    width: 300px;
+    position: relative;
+    left: 10em;
+  }
   .footer-container {
     float: right;
     width: 80%;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .shoes-container {
+    left: 24%;
+  }
+  .products-container {
+    grid-template-columns: repeat(4, minmax(auto, 1fr));
   }
 }

@@ -155,7 +155,7 @@ let categoryItems = [
   },
   {
     title: "children shoes",
-    image: "https://tinyurl.com/279jmkcn",
+    image: "https://m.media-amazon.com/images/I/71Tu1gb2ZjL._AC_UL1500_.jpg",
     price: 52.99,
     type: "boots",
     gender: "children",

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Survey form</title>
+    <link rel="stylesheet" href="../css/contact.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <a href="./index.html">Go Back</a>
+
+        <h1 id="title">SHOEShop Support</h1>
+        <p id="description">
+          Tell us what you would like to change
+          <br />
+          which products you want us to add
+        </p>
+      </header>
+      <form id="survey-form">
+        <div class="input-headings">
+          <label for="name" id="name-label" class="headings">Name</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+            class="form-inputs"
+            required
+          />
+          <br />
+
+          <label for="email" id="email-label" class="headings">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            class="form-inputs"
+            required
+          />
+          <br />
+          <label for="textarea" id="textarea-top" class="headings"
+            >Feedback</label
+          >
+
+          <textarea
+            id="textarea"
+            cols=""
+            rows="5"
+            placeholder="Write here"
+            style="resize: vertical"
+          ></textarea>
+          <br />
+          <button type="submit" id="submit-button">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

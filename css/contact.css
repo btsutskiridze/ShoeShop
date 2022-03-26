@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap");
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  background: #bccce2;
+}
+
+.container {
+  width: 40%;
+  margin: 40px auto;
+  padding: 2em;
+  background: #e4ecf7;
+  border-radius: 20px;
+}
+
+header {
+  width: 85%;
+  margin: 2em auto 2.5em auto;
+}
+a {
+  text-decoration: unset;
+  font-weight: 600;
+  color: #517e9b;
+}
+a:hover {
+  color: #21465f;
+}
+#title {
+  font-size: 2.5rem;
+  margin-bottom: 0.2em;
+  color: #323b44;
+}
+
+#description {
+  line-height: 1.5em;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: #586d7a;
+}
+
+form {
+  width: 85%;
+  margin: 2em auto;
+}
+
+.headings {
+  display: block;
+  font-size: 1rem;
+  margin: 0.7em 0 0.2em 0.5em;
+  color: #324150;
+  font-weight: 500;
+}
+
+.form-inputs,
+textarea {
+  width: 100%;
+  padding-left: 1em;
+  border-radius: 10px;
+  border: 1px solid #d6e0ee;
+}
+
+.form-inputs {
+  height: 2.5em;
+  font-size: 0.9rem;
+}
+.form-inputs:focus,
+textarea:focus {
+  outline: 1px solid #21465f;
+}
+
+#textarea-top {
+  margin-top: 0.8rem;
+}
+
+textarea {
+  font-family: "Open Sans", sans-serif;
+  padding-top: 0.5em;
+  font-size: 0.9rem;
+}
+
+button {
+  margin-top: 1em;
+  padding: 0.2em 0.6em 0.2em 0.6em;
+  font-size: 1.2rem;
+  color: #323b44;
+  width: 50%;
+  background: #ffffff;
+  border-radius: 7px;
+  outline: 1px solid #c9d3dd;
+  border: unset;
+}
+#submit-button:hover {
+  /* background-color: #bccce2; */
+  outline-color: #21465f;
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    width: 80%;
+    /* margin: 0; */
+  }
+}
+@media screen and (max-width: 550px) {
+  .container {
+    width: unset;
+    margin: 0;
+    border-radius: 0;
+  }
+}
