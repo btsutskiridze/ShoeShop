@@ -12,9 +12,17 @@ body {
   background: #bccce2;
 }
 
+.outside-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
 .container {
   width: 40%;
-  margin: 40px auto;
   padding: 2em;
   background: #e4ecf7;
   border-radius: 20px;
@@ -24,6 +32,7 @@ header {
   width: 85%;
   margin: 2em auto 2.5em auto;
 }
+
 a {
   text-decoration: unset;
   font-weight: 600;
@@ -104,13 +113,15 @@ button {
 @media screen and (max-width: 1000px) {
   .container {
     width: 80%;
-    /* margin: 0; */
+    height: 100%;
   }
 }
 @media screen and (max-width: 550px) {
   .container {
-    width: unset;
-    margin: 0;
-    border-radius: 0;
+    width: 100%;
+    /* border-radius: 0; */
+  }
+  #title {
+    /* font-size: 1.5rem; */
   }
 }
