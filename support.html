@@ -20,42 +20,89 @@
             which products you want us to add
           </p>
         </header>
-        <form id="survey-form">
+        <form id="survey-form" onsubmit="return validateForm()" name="form">
           <div class="input-headings">
             <label for="name" id="name-label" class="headings">Name</label>
             <input
               type="text"
               id="name"
+              name="name"
               placeholder="Enter your name"
               class="form-inputs"
               required
             />
+            <span class="validation-msg" id="nameloc"></span class="validation-msg">
             <br />
 
             <label for="email" id="email-label" class="headings">Email</label>
             <input
               type="email"
               id="email"
+              name="email"
               placeholder="Enter your email"
               class="form-inputs"
               required
             />
+            <span class="validation-msg" id="emailloc"></span class="validation-msg">
             <br />
             <label for="textarea" id="textarea-top" class="headings"
               >Feedback</label
             >
-
             <textarea
+              name="feedback"
               id="textarea"
               cols=""
               rows="5"
               placeholder="Write here"
               style="resize: vertical"
             ></textarea>
+            <span class="validation-msg" id="feedbackloc"></span class="validation-msg">
             <br />
             <button type="submit" id="submit-button">Submit</button>
           </div>
         </form>
+        <!-- javascript -->
+        <script>
+          function validateForm() {
+            const name = document.form.name;
+            const email = document.form.email;
+            const feedback = document.form.feedback;
+            let status = false;
+            console.log(name);
+            if (name.value.length <= 2) {
+              document.getElementById("nameloc").innerHTML =
+                "please enter your name";
+              name.classList.add("error-border");
+              status = false;
+            } else {
+              document.getElementById("nameloc").innerHTML = "";
+              name.classList.remove("error-border");
+              status = true;
+            }
+            if (email.value.length < 6) {
+              document.getElementById("emailloc").innerHTML =
+                "please enter your email";
+                email.classList.add("error-border");
+              status = false;
+            } else {
+              document.getElementById("emailloc").innerHTML = "";
+              email.classList.remove("error-border");
+              status = true;
+            }
+            if (feedback.value.length < 15) {
+              document.getElementById("feedbackloc").innerHTML =
+                "please enter at least 5 word";
+                feedback.classList.add("error-border");
+              status = false;
+            } else {
+              document.getElementById("feedbackloc").innerHTML = "";
+              feedback.classList.remove("error-border");
+              status = true;
+            }
+
+            return status;
+          }
+        </script>
       </div>
     </div>
   </body>

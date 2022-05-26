@@ -110,6 +110,14 @@ button {
   outline-color: #21465f;
 }
 
+.error-border {
+  border: 1px solid red;
+}
+.validation-msg {
+  color: red;
+  font-size: 0.7rem;
+}
+
 @media screen and (max-width: 1000px) {
   .container {
     width: 80%;
